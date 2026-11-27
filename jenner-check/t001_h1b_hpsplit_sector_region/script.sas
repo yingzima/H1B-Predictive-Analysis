@@ -1,0 +1,94 @@
+/* mock rows with the same columns as the author's cleaned H1B csv */
+data H1B;
+input agent $ sector $ region $ NACIS $ state $ dependent $ wage;
+datalines;
+N Edu MW 6211 CA Y 147000
+Y Edu South 5221 CA Y 113000
+N IT MW 6211 NY Y 124000
+Y IT West 5415 CA Y 144000
+N Edu NE 5415 NY Y 126000
+Y Health MW 5415 TX N 97000
+Y IT NE 5415 NY N 48000
+Y IT West 5221 TX Y 47000
+N IT South 5415 TX N 135000
+Y Edu MW 6211 CA N 88000
+Y IT NE 5221 CA Y 76000
+Y IT West 5221 CA Y 102000
+N Finance South 5221 CA N 98000
+N Finance West 6211 TX Y 71000
+N Finance MW 6211 NY Y 50000
+N Finance South 5415 NY N 151000
+Y Health MW 5415 CA Y 46000
+N Health NE 5415 NY N 151000
+N Finance MW 5415 TX Y 149000
+N Finance South 6211 NY Y 132000
+N Edu MW 5221 CA Y 58000
+Y IT NE 6211 TX N 98000
+N Edu NE 6211 CA Y 74000
+N Edu West 5415 NY Y 53000
+N Health MW 5415 CA Y 81000
+Y Health South 5415 TX N 129000
+N Finance West 5221 TX N 49000
+Y IT West 6211 TX N 62000
+Y IT West 5221 NY Y 160000
+N Finance NE 6211 TX Y 156000
+N Edu West 6211 CA N 93000
+Y IT West 6211 CA N 157000
+N Edu NE 6211 NY N 101000
+N Edu West 6211 CA N 121000
+Y IT MW 6211 CA N 144000
+N Edu NE 5221 TX Y 131000
+N Finance South 5221 NY N 108000
+N Finance NE 5221 CA N 147000
+N Finance South 6211 TX Y 62000
+N Finance MW 5415 NY Y 80000
+N Finance West 5221 CA N 93000
+N Edu NE 6211 TX N 54000
+N IT NE 5415 NY N 118000
+N Health NE 6211 CA Y 96000
+Y Edu South 5221 CA Y 146000
+Y IT West 6211 NY N 54000
+N Finance South 5221 CA Y 141000
+N Edu West 5221 TX Y 95000
+N Finance West 6211 TX Y 102000
+N Edu South 5415 TX N 104000
+Y Health South 6211 NY Y 72000
+N Finance MW 5221 NY N 78000
+Y IT NE 5415 TX N 115000
+N Edu NE 5415 CA Y 99000
+N IT South 6211 CA N 64000
+N Edu MW 6211 CA Y 101000
+N Health South 6211 TX N 130000
+N Edu South 5415 NY N 118000
+N Edu South 5415 NY Y 122000
+N Edu West 5415 NY N 114000
+Y IT MW 5415 CA N 97000
+N Edu NE 5221 CA N 100000
+N Edu NE 5221 NY Y 78000
+Y Finance West 5415 CA Y 132000
+N Health NE 5415 NY N 58000
+N Edu West 6211 TX Y 134000
+N Edu West 5221 NY Y 113000
+N Finance South 6211 NY Y 74000
+N Health South 5221 CA Y 144000
+N Finance West 5415 CA Y 78000
+N Edu West 5221 NY Y 70000
+Y Edu West 6211 NY N 150000
+N Health West 6211 TX Y 147000
+N IT MW 5415 NY N 63000
+N Finance South 5415 CA N 131000
+Y IT West 6211 TX Y 142000
+Y IT NE 5221 NY N 100000
+Y Finance NE 6211 CA Y 68000
+N Edu MW 5221 TX Y 122000
+N Finance West 5415 TX Y 147000
+;
+run;
+
+/*Tree 1*/
+ods graphics on;
+proc hpsplit data=H1B plots=all;
+class agent sector region;
+model agent(event="Y") = sector region;
+run;
+ods graphics off;
