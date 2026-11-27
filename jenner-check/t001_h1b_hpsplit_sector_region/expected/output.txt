@@ -1,0 +1,59 @@
+                                                   The Jenner System               16:52 Friday, November 27, 2026     1
+
+
+                                                 The HPSPLIT Procedure
+
+Performance Information
+
+Execution Mode                  Single-Machine
+Number of Threads               2
+
+Data Access Information
+
+Data                    Engine  Role    Path
+WORK.H1B                PARQUET Input   On Client
+
+Model Information
+Response Variable         AGENT
+Event Level               Y
+Split Criterion           Entropy
+Pruning Method            Cost-Complexity
+Number of Observations    80
+Subtree Evaluation Criterion      Cost-Complexity
+Number of Branches                2
+Maximum Tree Depth Requested      10
+Maximum Tree Depth Achieved       6
+Tree Depth                        3
+Number of Leaves Before Pruning   14
+Number of Leaves After Pruning    5
+
+Number of Observations Read               80
+Number of Observations Used               80
+
+Predictors
+    1. SECTOR
+    2. REGION
+
+Number of Leaves          5
+Final Tree Depth          3
+
+Model-Based Fit Statistics for Selected Tree
+
+  N Leaves     ASE  Mis-class  Sensitivity  Specificity  Entropy    Gini      RSS     AUC
+         5  0.1155     0.1500       0.6800       0.9273   0.5486  0.2310  18.4830  0.8505
+
+Confusion Matrices
+                 Actual                N          Y   Error Rate
+Training         N                    51          4       0.0727
+                 Y                     8         17       0.3200
+
+ROC / AUC by Class
+Class                               AUC
+N                              0.850545
+Y                              0.850545
+
+Variable Importance
+Variable                     Importance       Relative
+sector                         3.354620       1.000000
+region                         2.153724       0.642017
+

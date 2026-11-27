@@ -1,0 +1,18 @@
+{
+  "_captured_at": "2026-11-27T16:52:44.563692Z",
+  "_captured_run_id": "r_8babcfeec9f545fe838254d4ecf7405f",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: The data set WORK.H1B has 80 observations and 7 variables.",
+    "NOTE: PROC HPSPLIT completed."
+  ],
+  "log_does_not_contain": [
+    "ERROR:",
+    "[JENNER-ERROR"
+  ],
+  "diagnostics": {
+    "parse_warnings": [],
+    "runtime_warnings": []
+  }
+}

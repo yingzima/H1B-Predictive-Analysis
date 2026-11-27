@@ -1,0 +1,36 @@
+1          options obs=100; /* cap input rows for the captured run */
+NOTE: Option OBS changed to 100.
+2
+3          /* mock rows with the same columns as the author's cleaned H1B csv */
+4          data H1B;
+5          input agent $ sector $ region $ NACIS $ state $ dependent $ wage;
+6          datalines;
+87         ;
+88         run;
+NOTE: DATA WORK.H1B
+
+NOTE: Processing inline DATALINES (80 lines)
+
+NOTE: The data set WORK.H1B has 80 observations and 7 variables.
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+89
+90         /*Tree 1*/
+91         ods graphics on;
+NOTE: ODS Graphics is ON (format=SVG).
+92         proc hpsplit data=H1B plots=all;
+93         class agent sector region;
+94         model agent(event="Y") = sector region;
+95         run;
+NOTE: PROC HPSPLIT data=WORK.H1B
+
+NOTE: PROC HPSPLIT: tree of 9 nodes (5 leaves) written to ods_output/HPSplitTree.tree.json
+NOTE: ODS plot written: ./ods_output/HPSplitROCPlot.svg
+NOTE: ODS plot written: ./ods_output/HPSplitTreePlot.svg
+NOTE: ODS plot written: ./ods_output/HPSplitZoomedTree.svg
+NOTE: ODS plot written: ./ods_output/PruningPlot.svg
+NOTE: ODS plot written: ./ods_output/CrossValidationASEPlot.svg
+NOTE: PROC HPSPLIT completed.
+96         ods graphics off;
+NOTE: ODS Graphics is OFF.

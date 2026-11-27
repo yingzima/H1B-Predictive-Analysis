@@ -1,0 +1,7 @@
+{
+  "bundle": "t001_h1b_hpsplit_sector_region",
+  "source_file": "model.sas",
+  "source_blob_sha": "c5a3978b7a6048b8f410690d2c73f4f76d8e5d38",
+  "source_commit": "d5cd7b60bfc8565ddfabeba352eee27151e471a7",
+  "notes": "Tree 1 (PROC HPSPLIT, agent ~ sector region) from model.sas, unchanged; the proc import of the local csv is replaced by an 80-row mock DATA step with the same columns."
+}
